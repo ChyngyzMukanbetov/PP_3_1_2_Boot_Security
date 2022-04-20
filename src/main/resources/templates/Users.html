@@ -4,21 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+    <a th:href="@{'/logout'}">Log out</a>
+    <h2></h2>
+
 </head>
 <body>
 <table border="1" cellpadding="5">
     <tr>
         <th>ID</th>
         <th>NAME</th>
-        <th>PASSWORD</th>
+<!--        <th>PASSWORD</th>-->
         <th>AGE</th>
         <th>ROLE</th>
 
     </tr>
     <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.pass}"></td>
+        <td th:text="${user.username}"></td>
+<!--        <td th:text="${user.password}"></td>-->
         <td th:text="${user.age}"></td>
         <td th:text="${user.roles}">
         </td>

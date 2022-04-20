@@ -1,6 +1,8 @@
 package ru.kata.spring.boot_security.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +24,8 @@ public class RegistrationController {
     @Autowired
     private RoleRepository roleRepository;
 
+    public PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     @Autowired
     public RegistrationController(UserService userService) {
         this.userService = userService;
@@ -38,6 +42,7 @@ public class RegistrationController {
         //Role roles = roleRepository.findByRolename("ADMIN");
         Set<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByRolename("ADMIN"));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(roles);
         userService.save(user);
         return "redirect:/login";

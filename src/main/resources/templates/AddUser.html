@@ -4,27 +4,36 @@
 <head>
     <meta charset="utf-8" />
     <h1>Add User</h1>
+    <a th:href="@{'/logout'}">Log out</a>
+    <h2></h2>
 </head>
 <body>
 <form th:action="@{/admin/add}" method="post">
-    <p><label for="name">name</label></p>
-    <p><input type="text" id="name" name="name" required></p>
-    <p><label for="pass">password</label></p>
-    <p><input type="text" id="pass" name="pass" required></p>
+    <p><label for="username">username</label></p>
+    <p><input type="text" id="username" name="username" required></p>
+    <p><label for="password">password</label></p>
+    <p><input type="text" id="password" name="password" required></p>
     <p><label for="age">age</label></p>
     <p><input type="number" id="age" name="age" required></p>
-
-
     <p><label>-->
-          <select class="custom-select" multiple id="roles" name="newRoles[]">
-              <option value="ROLE_ADMIN">ADMIN</option>
-              <option value="ROLE_USER">USER</option>
+          <select class="custom-select" multiple id="roles2" name="roles2">
+              <option value="ADMIN">ADMIN</option>
+              <option value="USER">USER</option>
           </select>
     </label>
-
     <p>
         <input type="submit" value="add">
     </p>
 </form>
 </body>
 </html>
+
+<!--<form th:action="@{/}">-->
+<!--    <input type="text" th:name="participant"/>-->
+<!--    <select th:name="country">-->
+<!--        <option value="de">Germany</option>-->
+<!--        <option value="nl">Netherlands</option>-->
+<!--        <option value="pl">Poland</option>-->
+<!--        <option value="lv">Latvia</option>-->
+<!--    </select>-->
+<!--</form>-->
